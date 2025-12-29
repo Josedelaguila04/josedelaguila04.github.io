@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jose Del Aguila</title>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #121212;
+            color: white;
+        }
+
+        /* LAYOUT CONTAINER – keeps margins constant */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;    /* slight inner padding */
+        }
+
+        /* YELLOW GLOW COLOR */
+        :root {
+            --glow-yellow: #ffd900;
+        }
+
+        /* NAVBAR */
+        nav {
+            background-color: #121212;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0; /* no side padding – container handles that */
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--glow-yellow);
+            text-shadow: 0px 0px 8px rgba(255, 217, 0, 0.8);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s ease-in-out;
+        }
+
+        nav ul li a:hover {
+            color: var(--glow-yellow);
+            text-shadow: 0px 0px 6px rgba(255, 217, 0, 0.7);
+        }
+
+        .contact-btn {
+            background-color: var(--glow-yellow);
+            padding: 8px 18px;
+            color: black;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 0 12px rgba(255, 217, 0, 0.8);
+        }
+
+        /* GENERAL SECTION LAYOUT */
+        .section {
+            padding: 80px 0; /* top/bottom only – left/right via .container */
+        }
+
+        .section h2 {
+            font-size: 42px;
+            margin-bottom: 30px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 100px 0;  /* top/bottom only */
+        }
+
+        .hero-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-text {
+            max-width: 50%;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            margin-bottom: 20px;
+            text-shadow: 0px 0px 12px rgba(255, 217, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-light {
+            background-color: var(--glow-yellow);
+            padding: 12px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            box-shadow: 0 0 12px rgba(255, 217, 0, 0.8);
+        }
+
+        .btn-dark {
+            background-color: transparent;
+            padding: 12px 22px;
+            border: 2px solid var(--glow-yellow);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--glow-yellow);
+            font-weight: bold;
+            text-shadow: 0px 0px 6px rgba(255, 217, 0, 0.7);
+            box-shadow: 0 0 10px rgba(255, 217, 0, 0.4) inset;
+        }
+
+        /* IMAGE */
+        .hero img {
+            width: 380px;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 0 40px rgba(255, 217, 0, 0.5);
+            object-fit: cover;
+        }
+
+        /* EXPERIENCE SECTION */
+        .experience-card-outer {
+            background-color: #161616;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+            max-width: 1000px;
+        }
+
+        .experience-card-inner {
+            border-radius: 18px;
+            border: 1px solid #262626;
+            padding: 24px 28px;
+            background-color: #181818;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .experience-title {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .experience-meta {
+            font-size: 14px;
+            color: #c4c4c4;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .experience-meta-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 999px;
+            background-color: #c4c4c4;
+        }
+
+        .experience-description {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #e3e3e3;
+        }
+
+        /* SKILLS SECTION */
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .skill-pill {
+            padding: 10px 18px;
+            border-radius: 999px;
+            background-color: #181818;
+            border: 1px solid #262626;
+            font-size: 15px;
+        }
+
+        /* PLACEHOLDER SECTIONS */
+        .placeholder {
+            color: #b5b5b5;
+            font-size: 16px;
+        }
+
+        /* CONTACT */
+        .contact-content {
+            max-width: 500px;
+        }
+
+        .contact-content p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .contact-link {
+            color: var(--glow-yellow);
+            text-decoration: none;
+        }
+
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero {
+                padding: 70px 0;
+            }
+
+            .hero-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                max-width: 100%;
+                margin-bottom: 30px;
+            }
+
+            .experience-card-outer {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <div class="container nav-inner">
+            <div class="logo">JDA</div>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#teams">Teams</a></li>
+            </ul>
+
+            <a href="#contact" class="contact-btn">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HERO MAIN SECTION -->
+    <section id="home" class="hero">
+        <div class="container hero-inner">
+            <div class="hero-text">
+                <h1>Jose Del Aguila</h1>
+                <p>
+                    I'm currently a senior at Cal Poly Pomona, pursuing undergraduate studies 
+                    in Aerospace Engineering. I enjoy turning ambitious ideas into real hardware by 
+                    combining engineering design, testing, and embedded systems. Outside of school, 
+                    I enjoy hands-on projects, research, and learning anything that pushes my curiosity.
+                </p>
+
+                <div class="buttons">
+                    <a class="btn-light" href="#projects">View Projects</a>
+                    <a class="btn-dark" href="#contact">Get in touch</a>
+                </div>
+            </div>
+
+            <img src="Headshot.jpg" alt="Jose Image">
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2>Experience</h2>
+
+            <div class="experience-card-outer">
+                <div class="experience-card-inner">
+                    <div class="experience-header">
+                        <div class="experience-title">
+                            Prototype Electrical Engineering Intern
+                        </div>
+                        <div class="experience-meta">
+                            <span>Rivian</span>
+                            <span class="experience-meta-dot"></span>
+                            <span>2025</span>
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        Board bring-up, logic analyzer/scope testing, high-speed communication debugging,
+                        and PCB rework to support prototype hardware development.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2>Skills</h2>
+
+            <div class="skills-tags">
+                <div class="skill-pill">PCB Design</div>
+                <div class="skill-pill">Embedded Systems</div>
+                <div class="skill-pill">High-Speed Communication</div>
+                <div class="skill-pill">Simulations</div>
+                <div class="skill-pill">C/C++</div>
+                <div class="skill-pill">Prototyping / Debugging</div>
+                <div class="skill-pill">Power Electronics</div>
+                <div class="skill-pill">Lab Equipment</div>
+                <div class="skill-pill">Altium</div>
+                <div class="skill-pill">KiCad</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS PLACEHOLDER -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>Projects</h2>
+            <p class="placeholder">
+                Add cards or images for your main projects here (rocketry, research, avionics, etc.).
+            </p>
+        </div>
+    </section>
+
+    <!-- TEAMS PLACEHOLDER -->
+    <section id="teams" class="section">
+        <div class="container">
+            <h2>Teams</h2>
+            <p class="placeholder">
+                Briefly describe the student teams and labs you’re part of (UMBRA, Liquid Rocket Lab, CE MARC, etc.).
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact</h2>
+            <div class="contact-content">
+                <p>Feel free to reach out for opportunities, collaborations, or questions.</p>
+                <p>Email: <a class="contact-link" href="mailto:youremail@cpp.edu">youremail@cpp.edu</a></p>
+                <p>LinkedIn: <a class="contact-link" href="#" target="_blank">Your LinkedIn Profile</a></p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
