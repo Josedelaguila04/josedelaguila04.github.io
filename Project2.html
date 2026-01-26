@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EXO Bronco - Structures Team | Jose Del Aguila</title>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #121212;
+      color: white;
+    }
+
+    :root { --glow-yellow: #ffd900; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* NAVBAR */
+    nav {
+      background-color: #121212;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 15px 0;
+      border-bottom: 1px solid #1f1f1f;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--glow-yellow);
+      text-shadow: 0 0 8px rgba(255,217,0,0.8);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 26px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: var(--glow-yellow);
+      text-shadow: 0 0 6px rgba(255,217,0,0.7);
+    }
+
+    .contact-btn {
+      background-color: var(--glow-yellow);
+      padding: 8px 18px;
+      color: black;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 12px rgba(255,217,0,0.8);
+    }
+
+    /* PROJECT HERO */
+    .project-hero {
+      padding: 70px 0 40px;
+      border-bottom: 1px solid #1f1f1f;
+    }
+
+    .project-hero h1 {
+      font-size: 72px;
+      margin: 0 0 18px 0;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .project-hero p {
+      margin: 0 0 22px 0;
+      max-width: 760px;
+      color: #d6d6d6;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    /* TAGS */
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .tag-pill {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background-color: #181818;
+      border: 1px solid #262626;
+      font-size: 14px;
+      color: #f0f0f0;
+    }
+
+    .tag-dot {
+      color: #9d9d9d;
+      font-weight: 700;
+    }
+
+    /* CONTENT */
+    .content {
+      padding: 60px 0 90px;
+    }
+
+    .content h2 {
+      font-size: 38px;
+      margin: 0 0 16px 0;
+    }
+
+    .content p {
+      max-width: 900px;
+      color: #d6d6d6;
+      line-height: 1.7;
+      font-size: 16.5px;
+    }
+
+    /* GALLERY */
+    .gallery {
+      margin-top: 46px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-top: 18px;
+    }
+
+    .gallery-card {
+      background: #151515;
+      border: 1px solid #262626;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      background: #101010;
+      cursor: zoom-in;
+    }
+
+    .gallery-card-body {
+      padding: 14px 16px 16px;
+    }
+
+    .gallery-card-title {
+      font-size: 15px;
+      font-weight: 800;
+      margin: 0 0 8px 0;
+    }
+
+    .gallery-card-desc {
+      margin: 0;
+      color: #cfcfcf;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* ACTION BUTTONS */
+    .gallery-actions {
+      margin-top: 26px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn-back {
+      background-color: var(--glow-yellow);
+      padding: 12px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: black;
+      font-weight: 800;
+      box-shadow: 0 0 12px rgba(255,217,0,0.55);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      padding: 12px 18px;
+      border: 2px solid var(--glow-yellow);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--glow-yellow);
+      font-weight: 800;
+      box-shadow: 0 0 10px rgba(255,217,0,0.25) inset;
+    }
+
+    @media (max-width: 900px) {
+      .container { padding: 0 20px; }
+      .project-hero h1 { font-size: 50px; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-card img { height: 220px; }
+    }
+
+    /* LIGHTBOX (click image to expand) */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.82);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 9999;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-inner {
+      width: min(1100px, 96vw);
+      max-height: 92vh;
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 25px 70px rgba(0,0,0,0.75);
+    }
+
+    .lightbox-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 14px;
+      border-bottom: 1px solid #222;
+    }
+
+    .lightbox-title {
+      font-weight: 800;
+      font-size: 14px;
+      color: #f0f0f0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .lightbox-close {
+      border: 1px solid rgba(255,217,0,0.35);
+      background: transparent;
+      color: var(--glow-yellow);
+      font-weight: 900;
+      border-radius: 10px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    .lightbox-close:hover {
+      box-shadow: 0 0 12px rgba(255,217,0,0.25);
+    }
+
+    .lightbox-imgwrap {
+      background: #0f0f0f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-imgwrap img {
+      width: 100%;
+      height: auto;
+      max-height: 82vh;
+      object-fit: contain;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo">JDA</div>
+      <ul>
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#teams">Teams</a></li>
+      </ul>
+      <a href="index.html#contact" class="contact-btn">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="project-hero">
+    <div class="container">
+      <h1>EXO Bronco - Structures Team</h1>
+      <p>
+        Conducting structural analysis on a two-stage solid rocket intended to reach the
+        Von Karman Line. Utilizing FEA, hand calculations, and designing test fixtures.
+      </p>
+
+      <div class="tag-row">
+        <span class="tag-pill">Analysis</span>
+        <span class="tag-dot">•</span>
+        <span class="tag-pill">Designing</span>
+        <span class="tag-dot">•</span>
+        <span class="tag-pill">Fabrication</span>
+        <span class="tag-dot">•</span>
+        <span class="tag-pill">Testing</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="content">
+    <div class="container">
+      <h2>Overview</h2>
+      <p>
+        The objective of this project is to design and fabricate a two-stage solid rocket with the goal of becoming the first traditional CSU student-led team to reach the Kármán line. The team is currently developing a test vehicle to validate stage separation and recovery systems. I perform structural analysis on critical rocket components such as bulkheads and the airframe, develop FEA models of the launch vehicle, and collaborate on the design of test fixtures to optimize system performance.
+      </p>
+
+      <!-- GALLERY -->
+      <section class="gallery">
+        <h2>Gallery</h2>
+
+        <div class="gallery-grid">
+          <article class="gallery-card">
+            <img src="MTD3.jpg" alt="Model of Test vehicle" data-title="Mech Tech Demo 3">
+            <div class="gallery-card-body">
+              <p class="gallery-card-title">Mech Tech Demo 3</p>
+              <p class="gallery-card-desc">Model of current launch vehicle.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card">
+            <img src="ClampFixture.jpg" alt="3D printed clamp" data-title="PLA Clamp Fixture">
+            <div class="gallery-card-body">
+              <p class="gallery-card-title">PLA Clamp Fixture</p>
+              <p class="gallery-card-desc">Designed 3D-printed clamp for stage seperation test.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card">
+            <img src="FullFixture.jpg" alt="Test Fixture" data-title="Full Test Fixture">
+            <div class="gallery-card-body">
+              <p class="gallery-card-title">Full Test Fixture</p>
+              <p class="gallery-card-desc">Clamp attached to airframe holding tension.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card">
+            <img src="FEABuckling.png" alt="FEA Model of Airframe" data-title="Airframe FEM">
+            <div class="gallery-card-body">
+              <p class="gallery-card-title">Airframe FEM</p>
+              <p class="gallery-card-desc">FEA model of booster airframe. Checking for Buckling.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="gallery-actions">
+          <a class="btn-back" href="index.html#projects">← Back to Projects</a>
+          <a class="btn-outline" href="index.html#contact">Get in touch</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox-inner" role="dialog" aria-modal="true" aria-label="Image preview">
+      <div class="lightbox-toolbar">
+        <div id="lightboxTitle" class="lightbox-title">Preview</div>
+        <button id="lightboxClose" class="lightbox-close" type="button">Close ✕</button>
+      </div>
+      <div class="lightbox-imgwrap">
+        <img id="lightboxImg" src="" alt="Expanded preview">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxTitle = document.getElementById("lightboxTitle");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+    // Click any gallery image to open
+    document.querySelectorAll(".gallery-card img").forEach(img => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightboxTitle.textContent = img.dataset.title || img.alt || "Preview";
+        lightbox.classList.add("open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden"; // prevent background scroll
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      lightboxImg.src = "";
+      document.body.style.overflow = "";
+    }
+
+    // Close button
+    lightboxClose.addEventListener("click", closeLightbox);
+
+    // Click outside closes
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // ESC closes
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && lightbox.classList.contains("open")) {
+        closeLightbox();
+      }
+    });
+  </script>
+
+</body>
+</html>
