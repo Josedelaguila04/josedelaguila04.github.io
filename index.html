@@ -94,6 +94,26 @@
             padding: 100px 0;  /* top/bottom only */
         }
 
+        /* SECTION DIVIDERS – flat, subtle like screenshot */
+        .section {
+            padding: 80px 0;
+            background-color: #121212; /* base black */
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .section.alt {
+            background-color: #161616; /* slightly gray */
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        /* Optional: divider under hero */
+        .hero {
+            padding: 100px 0;
+            background-color: #121212;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+
         .hero-inner {
             display: flex;
             justify-content: space-between;
@@ -264,6 +284,86 @@
                 max-width: 100%;
             }
         }
+
+        /* PROJECTS GRID */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px;
+        }
+
+        .project-card {
+            background: #151515;
+            border: 1px solid #242424;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 217, 0, 0.35);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            display: block;
+            background: #101010;
+        }
+
+        .project-card-body {
+            padding: 18px 18px 16px 18px;
+        }
+
+        .project-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .project-card p {
+            margin: 0 0 16px 0;
+            color: #d6d6d6;
+            line-height: 1.5;
+            font-size: 15.5px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--glow-yellow);
+            text-decoration: none;
+            font-weight: 700;
+            text-shadow: 0 0 8px rgba(255, 217, 0, 0.35);
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .project-link .arrow {
+            transition: transform 0.15s ease;
+        }
+
+        .project-link:hover .arrow {
+            transform: translateX(3px);
+        }
+
+        /* Responsive grid */
+        @media (max-width: 1000px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .project-card img {
+                height: 220px;
+            }
+        }
+
     </style>
 </head>
 
@@ -295,7 +395,7 @@
                     I'm currently a senior at Cal Poly Pomona, pursuing undergraduate studies 
                     in Aerospace Engineering. I enjoy turning ambitious ideas into real hardware by 
                     combining engineering design, testing, and embedded systems. Outside of school, 
-                    I enjoy hands-on projects, research, and learning anything that pushes my curiosity.
+                    I enjoy hands-on projects, research, and running marathons!
                 </p>
 
                 <div class="buttons">
@@ -309,7 +409,7 @@
     </section>
 
     <!-- EXPERIENCE SECTION -->
-    <section id="experience" class="section">
+    <section id="experience" class="section alt">
         <div class="container">
             <h2>Experience</h2>
 
@@ -317,17 +417,18 @@
                 <div class="experience-card-inner">
                     <div class="experience-header">
                         <div class="experience-title">
-                            Prototype Electrical Engineering Intern
+                            Structural Vibrations Research Assistant
                         </div>
                         <div class="experience-meta">
-                            <span>Rivian</span>
+                            <span>Cal Poly Enterprises</span>
                             <span class="experience-meta-dot"></span>
-                            <span>2025</span>
+                            <span>2025-2026</span>
                         </div>
                     </div>
                     <div class="experience-description">
-                        Board bring-up, logic analyzer/scope testing, high-speed communication debugging,
-                        and PCB rework to support prototype hardware development.
+                        Performing modal analysis using a vibration-focused DAQ system, working with accelerometers, 
+                        impact hammers, and ANSYS simulations. Progressing toward coupled-system and transient vibration 
+                        analysis to improve current SEA and high-frequency vibration modeling methods.
                     </div>
                 </div>
             </div>
@@ -340,48 +441,123 @@
             <h2>Skills</h2>
 
             <div class="skills-tags">
-                <div class="skill-pill">PCB Design</div>
-                <div class="skill-pill">Embedded Systems</div>
-                <div class="skill-pill">High-Speed Communication</div>
-                <div class="skill-pill">Simulations</div>
-                <div class="skill-pill">C/C++</div>
-                <div class="skill-pill">Prototyping / Debugging</div>
-                <div class="skill-pill">Power Electronics</div>
+                <div class="skill-pill">Structural Analysis</div>
+                <div class="skill-pill">Avionics Integration</div>
+                <div class="skill-pill">FEMAP/NASTRAN</div>
+                <div class="skill-pill">Ansys</div>
+                <div class="skill-pill">C++</div>
+                <div class="skill-pill">Modal Analysis</div>
+                <div class="skill-pill">Solidworks</div>
                 <div class="skill-pill">Lab Equipment</div>
-                <div class="skill-pill">Altium</div>
+                <div class="skill-pill">Sensors/Actuators</div>
+                <div class="skill-pill">Composite Layups</div>
                 <div class="skill-pill">KiCad</div>
+                <div class="skill-pill">Systems Engineering</div>
+                <div class="skill-pill">3D-Printing</div>
+                <div class="skill-pill">Wiring</div>
+                <div class="skill-pill">Soldering</div>
+                <div class="skill-pill">Micrcontrollers</div>
+                <div class="skill-pill">Multimeters</div>
+                <div class="skill-pill">Oscilloscopes</div>
+                <div class="skill-pill">P&ID</div>
             </div>
         </div>
     </section>
 
-    <!-- PROJECTS PLACEHOLDER -->
-    <section id="projects" class="section">
-        <div class="container">
-            <h2>Projects</h2>
-            <p class="placeholder">
-                Add cards or images for your main projects here (rocketry, research, avionics, etc.).
-            </p>
-        </div>
-    </section>
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section alt">
+    <div class="container">
+        <h2>Projects</h2>
 
-    <!-- TEAMS PLACEHOLDER -->
-    <section id="teams" class="section">
-        <div class="container">
-            <h2>Teams</h2>
-            <p class="placeholder">
-                Briefly describe the student teams and labs you’re part of (UMBRA, Liquid Rocket Lab, CE MARC, etc.).
+        <div class="projects-grid">
+        <!-- Card 1 -->
+        <article class="project-card">
+            <img src="EngineServoValves.jpg" alt="Servo Valves">
+            <div class="project-card-body">
+            <h3>Liquid Rocket Lab Academy</h3>
+            <p>
+                Designed and fabricated multiple servo-actuated valveswith custom 3D-printed 
+                housings to regulate engine propellant flow.
             </p>
+            <a class="project-link" href="Project1.html">
+                Learn more <span class="arrow">→</span>
+            </a>
+            </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="project-card">
+            <img src="MTD3.jpg" alt="EXO bronco test launch vehicle">
+            <div class="project-card-body">
+            <h3>EXO Bronco - Structures Team</h3>
+            <p>
+                Conducting structural analysis on a two-stage solid rocket intended to reach the
+                Von Karman Line. Utilizing FEA, hand calculations, and designing test fixtures.
+            </p>
+            <a class="project-link" href="Project2.html">
+                Learn more <span class="arrow">→</span>
+            </a>
+            </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="project-card">
+            <img src="AvionicsSled.jpg" alt="Avionics sled">
+            <div class="project-card-body">
+            <h3>CE-MARC - Avionics Lead</h3>
+            <p>
+                Leading the design of the system avionics architecture of a modular autonomous recovery
+                capsule, working hands-on with electronic hardware including micrcontroller, sensors,
+                and actuators.
+            </p>
+            <a class="project-link" href="Project3.html">
+                Learn more <span class="arrow">→</span>
+            </a>
+            </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="project-card">
+            <img src="LOX_FUELFill.jpg" alt="EXO bronco test launch vehicle">
+            <div class="project-card-body">
+            <h3>Liquid Rocket Lab - Propellant Feed Systems Team</h3>
+            <p>
+                Opimizing fuel and oxidizer lines of a Ethanol-LOX liquid rocket engine. 
+                Working with P&ID of the system and modeling new plumbing components. 
+            </p>
+            <a class="project-link" href="Project4.html">
+                Learn more <span class="arrow">→</span>
+            </a>
+            </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="project-card">
+            <img src="MewithRocket.jpg" alt="Me holding a rocket">
+            <div class="project-card-body">
+            <h3>L1 Rocket</h3>
+            <p>
+                Designed, fabricated, and successfully launched an L1-certified rocket, including 
+                hands-on manufacturing of the full airframe and the design and 3D printing 
+                of the nose cone.
+            </p>
+            <a class="project-link" href="Project5.html">
+                Learn more <span class="arrow">→</span>
+            </a>
+            </div>
+        </article>        
         </div>
+    </div>
     </section>
 
     <!-- CONTACT SECTION -->
-    <section id="contact" class="section">
+    <section id="contact" class="section alt">
         <div class="container">
             <h2>Contact</h2>
             <div class="contact-content">
                 <p>Feel free to reach out for opportunities, collaborations, or questions.</p>
-                <p>Email: <a class="contact-link" href="mailto:youremail@cpp.edu">youremail@cpp.edu</a></p>
-                <p>LinkedIn: <a class="contact-link" href="#" target="_blank">Your LinkedIn Profile</a></p>
+                <p>Email: <a class="contact-link" href="mailto:youremail@cpp.edu">joseaglejr04@gmail.com</a></p>
+                <p>LinkedIn: <a class="contact-link" href="#" target="_blank">https://www.linkedin.com/in/jose-del-aguila-7a166a292/</a></p>
             </div>
         </div>
     </section>
